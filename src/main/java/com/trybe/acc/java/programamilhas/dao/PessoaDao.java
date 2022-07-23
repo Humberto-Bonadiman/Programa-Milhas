@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class PessoaDao {
@@ -15,7 +16,7 @@ public class PessoaDao {
 
   /**
    * Método responsável pela realização do login.
-   * 
+   *
    * <p>
    * Não delete este método!
    * </p>
@@ -26,5 +27,15 @@ public class PessoaDao {
     query.setParameter("login", login);
     query.setParameter("hash", hash);
     return (Pessoa) query.getSingleResult();
+  }
+
+  @Transactional
+  public void create(Pessoa pessoa) {
+    entityManager.persist(pessoa);
+  }
+
+  @SuppressWarnings("unchecked")
+  public List<Pessoa> listar() {
+    return entityManager.createQuery("from Pessoa").getResultList();
   }
 }
