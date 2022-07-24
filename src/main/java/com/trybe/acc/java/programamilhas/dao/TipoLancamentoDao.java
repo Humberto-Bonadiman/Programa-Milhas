@@ -5,6 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 @ApplicationScoped
 public class TipoLancamentoDao {
@@ -17,7 +18,9 @@ public class TipoLancamentoDao {
    */
   @SuppressWarnings("unchecked")
   public List<TipoLancamento> listar() {
-    return entityManager.createQuery("from TipoLancamento").getResultList();
+    String hql = "from " + TipoLancamento.class.getSimpleName();
+    Query query = entityManager.createQuery(hql);
+    return query.getResultList();
   }
 
 }

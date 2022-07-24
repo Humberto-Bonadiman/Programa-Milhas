@@ -5,6 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 @ApplicationScoped
 public class LancamentoDao {
@@ -12,8 +13,13 @@ public class LancamentoDao {
   @Inject
   EntityManager entityManager;
 
+  /**
+   * javadoc.
+   */
   @SuppressWarnings("unchecked")
   public List<Lancamento> listar() {
-    return entityManager.createQuery("from Lancamento").getResultList();
+    String hql = "from " + Lancamento.class.getSimpleName();
+    Query query = entityManager.createQuery(hql);
+    return query.getResultList();
   }
 }

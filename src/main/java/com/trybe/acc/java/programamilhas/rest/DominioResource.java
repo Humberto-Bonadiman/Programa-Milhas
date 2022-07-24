@@ -6,7 +6,6 @@ import com.trybe.acc.java.programamilhas.model.TipoLancamento;
 import com.trybe.acc.java.programamilhas.service.DominioService;
 
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/dominio")
-@ApplicationScoped
 public class DominioResource {
 
   @Inject
@@ -22,7 +20,7 @@ public class DominioResource {
 
   @GET
   @Path("/tipolancamento")
-  @Produces(MediaType.TEXT_PLAIN)
+  @Produces(MediaType.APPLICATION_JSON)
   public List<TipoLancamento> listarTipo() {
     List<TipoLancamento> tipoLancamento = dominioService.listarTipo();
     return tipoLancamento;
@@ -30,15 +28,17 @@ public class DominioResource {
 
   @GET
   @Path("/parceiro")
-  @Produces(MediaType.TEXT_PLAIN)
+  @Produces(MediaType.APPLICATION_JSON)
   public List<Parceiro> listarParceiro() {
-    return dominioService.listarParceiro();
+    List<Parceiro> parceiro = dominioService.listarParceiro();
+    return parceiro;
   }
 
   @GET
   @Path("/produto")
-  @Produces(MediaType.TEXT_PLAIN)
-  public List<Produto> listarProduto() {
-    return dominioService.listarProduto();
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<Produto> getProdutos() {
+    List<Produto> produto = dominioService.listarProduto();
+    return produto;
   }
 }
