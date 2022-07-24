@@ -11,10 +11,10 @@ public class SaldoResult {
   /**
    * saldo result.
    */
-  public SaldoResult(Integer idUsuario, String login, Integer saldo) {
-    this.idUsuario = idUsuario;
+  public SaldoResult(Integer id, String login) {
+    this.idUsuario = id;
     this.login = login;
-    this.saldo = saldo;
+    this.saldo = 0;
   }
 
   public Integer getIdUsuario() {

@@ -29,8 +29,11 @@ public class PessoaDao {
     return (Pessoa) query.getSingleResult();
   }
 
+  /**
+   * salvar.
+   */
   @Transactional
-  public void create(Pessoa pessoa) {
+  public void salvar(Pessoa pessoa) {
     entityManager.persist(pessoa);
   }
 

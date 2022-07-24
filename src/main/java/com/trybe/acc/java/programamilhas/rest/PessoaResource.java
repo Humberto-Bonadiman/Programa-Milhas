@@ -13,7 +13,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -23,7 +22,6 @@ import javax.ws.rs.core.MediaType;
  *
  */
 @Path("/pessoa")
-@Produces(MediaType.TEXT_PLAIN)
 @ApplicationScoped
 public class PessoaResource {
 
@@ -38,6 +36,7 @@ public class PessoaResource {
    */
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
   public MensagemResult salvar(LoginDto pessoa)
       throws InvalidKeySpecException, NoSuchAlgorithmException {
     service.salvar(pessoa);
@@ -49,7 +48,6 @@ public class PessoaResource {
    * javadoc.
    */
   @DELETE
-  @Produces(MediaType.APPLICATION_JSON)
   public MensagemResult deletar(@QueryParam("token") String token)
       throws AcessoNaoAutorizadoException {
     Integer id = tokenUtil.obterIdUsuario(token);
