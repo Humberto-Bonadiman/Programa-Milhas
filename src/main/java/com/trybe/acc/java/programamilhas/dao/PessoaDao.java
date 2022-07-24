@@ -34,6 +34,19 @@ public class PessoaDao {
     entityManager.persist(pessoa);
   }
 
+  @Transactional
+  public void deletar(Integer id) {
+    Pessoa pessoa = entityManager.find(Pessoa.class, id);
+    entityManager.remove(pessoa);
+  }
+
+  /**
+   * Busca pessoa pelo id.
+   */
+  public Pessoa getById(Integer id) {
+    return entityManager.find(Pessoa.class, id);
+  }
+
   @SuppressWarnings("unchecked")
   public List<Pessoa> listar() {
     return entityManager.createQuery("from Pessoa").getResultList();
