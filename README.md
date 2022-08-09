@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do Gerenciador de Estoque!
+# Boas vindas ao repositório do Programa de Milhas!
 
 ---
 
